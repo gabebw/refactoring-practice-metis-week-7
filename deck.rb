@@ -3,14 +3,13 @@ require "./card"
 class Deck
   SUITS = %w[Clubs Diamonds Hearts Spades]
   NUMBERS = (1..13)
-  CARDS_PER_HAND = 5
 
   def initialize
     @cards = new_batch_of_cards.shuffle
   end
 
-  def deal_hand
-    @cards.shift(5)
+  def take(number)
+    @cards.shift(number)
   end
 
   private

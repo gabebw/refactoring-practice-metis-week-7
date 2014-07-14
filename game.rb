@@ -1,15 +1,16 @@
 require "./deck"
+require "./dealer"
 
 class Game
-  def initialize(number_of_players)
-    @deck = Deck.new
+  def initialize(dealer, number_of_players)
+    @dealer = dealer
     @number_of_players = number_of_players
     @players = {}
   end
 
   def play
     @number_of_players.times do |player_number|
-      @players[player_number] = @deck.deal_hand
+      @players[player_number] = @dealer.deal_hand
     end
   end
 
@@ -30,6 +31,7 @@ class Game
   end
 end
 
-game = Game.new(4)
+dealer = Dealer.new(Deck.new)
+game = Game.new(dealer, 4)
 game.play
 game.announce_results
