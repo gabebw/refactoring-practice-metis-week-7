@@ -1,5 +1,6 @@
 require "./deck"
 require "./dealer"
+require "./player"
 
 class Game
   def initialize(dealer, number_of_players)
@@ -9,25 +10,15 @@ class Game
   end
 
   def play
-    @number_of_players.times do |player_number|
-      @players[player_number] = @dealer.deal_hand
+    @players = @number_of_players.times.map do |player_number|
+      Player.new(@dealer.deal_hand, player_number)
     end
   end
 
   def announce_results
-    @players.each_with_index do |player, player_number|
-      announce_player_results(player_number)
-      puts
+    @players.each do |player|
+      player.announce_results
     end
-  end
-
-  private
-
-  def announce_player_results(number)
-    message = "Player #{number}"
-    puts message
-    puts "-" * message.size
-    puts @players[number]
   end
 end
 
