@@ -31,9 +31,6 @@ class Game
     @rounds << round
     round.play
   end
-
-  def display_round(round)
-  end
 end
 
 Game.new(Ai.new).play
