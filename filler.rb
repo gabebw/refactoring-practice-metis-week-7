@@ -1,10 +1,13 @@
+# Generate filler text
 class Filler
-  def initialize(target)
-    @words = []
-    @target = target
+  def render
+    # Join the words with a newline
+    @words.join(" ")
   end
 
+  # Generate the content
   def run
+    # wc means word count
     wc = 0
     while wc <= @target
         @words << Sentence.new
@@ -12,15 +15,17 @@ class Filler
     end
   end
 
-  def render
-    @words.join(" ")
+  # Initialize the object
+  def initialize(target)
+    @words = []
+    @target = target
   end
 end
 
 class Sentence
   def initialize
   @number_of_words = (3..8).to_a.sample
-    @content = @number_of_words.times.map { Word.new.to_s }
+    @content = @number_of_words.times.map { Letters.new.to_s }
   end
 
 def to_s
@@ -32,7 +37,7 @@ end
   end
 end
 
-class Word
+class Letters
   def to_s
     (1..12).to_a.sample.times.map { ("a".."z").to_a.sample }
   end
