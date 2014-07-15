@@ -5,16 +5,19 @@ class Round
   end
 
   def play
-    puts "Player played #{player_move}"
     puts "AI played #{ai_move}"
+    announce_winner
+  end
+
+  private
+
+  def announce_winner
     if winner == :ai
       puts "AI beats Player"
     else
       puts "Player beats AI"
     end
   end
-
-  private
 
   def winner
     judge = Judge.new(player_move, ai_move)
