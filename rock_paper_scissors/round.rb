@@ -5,7 +5,7 @@ class Round
   end
 
   def play
-    @ai.play(@player_move)
+    @ai.play
     announce
   end
 

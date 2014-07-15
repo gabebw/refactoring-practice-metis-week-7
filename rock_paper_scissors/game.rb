@@ -31,7 +31,7 @@ class Game
   end
 
   def play_round(move)
-    round = Round.new(move, @ai_class.new)
+    round = Round.new(move, @ai_class.new(move))
     @rounds << round
     round.play
   end
