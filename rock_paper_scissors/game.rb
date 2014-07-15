@@ -1,5 +1,6 @@
 require "./random_ai"
 require "./winning_ai"
+require "./losing_ai"
 require "./round"
 require "./judge"
 require "./scorer"
@@ -36,4 +37,4 @@ class Game
   end
 end
 
-Game.new(WinningAi).play
+Game.new(LosingAi).play
