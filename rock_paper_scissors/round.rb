@@ -6,9 +6,10 @@ class Round
 
   def play
     @ai.play(@player_move)
+    announce
   end
 
-  def announce_winner
+  def announce
     puts "AI played #{ai_move}"
     announce_winner
   end
