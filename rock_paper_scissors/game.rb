@@ -3,9 +3,9 @@ require "./round"
 require "./judge"
 
 class Game
-  def initialize(ai)
+  def initialize(ai_class = Ai)
     @rounds = []
-    @ai = ai
+    @ai_class = ai_class
   end
 
   def play
@@ -22,15 +22,23 @@ class Game
   private
 
   def ask_for_move
-    print "Your move? (R/P/S, q to quit) > "
+    print "[Won #{total_score}/#{total_rounds}] Your move? (R/P/S, q to quit) > "
     gets.chomp
   end
 
   def play_round(move)
-    round = Round.new(move, @ai)
+    round = Round.new(move, @ai_class.new)
     @rounds << round
     round.play
   end
+
+  def total_score
+    @rounds.map(&:score).inject(0, :+)
+  end
+
+  def total_rounds
+    @rounds.size
+  end
 end
 
-Game.new(Ai.new).play
+Game.new(Ai).play

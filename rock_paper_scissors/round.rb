@@ -14,6 +14,14 @@ class Round
     announce_winner
   end
 
+  def score
+    if winner == :ai
+      0
+    elsif winner == :player
+      1
+    end
+  end
+
   private
 
   def announce_winner
