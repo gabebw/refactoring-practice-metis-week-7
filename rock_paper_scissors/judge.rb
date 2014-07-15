@@ -5,13 +5,17 @@ class Judge
     "P" => "S",
   }
 
+  WINNER_IN_CASE_OF_TIE = :player
+
   def initialize(player_move, ai_move)
     @player_move = player_move
     @ai_move = ai_move
   end
 
   def winner
-    if ai_won?
+    if tied?
+      WINNER_IN_CASE_OF_TIE
+    elsif ai_won?
       :ai
     else
       :player
@@ -22,5 +26,9 @@ class Judge
 
   def ai_won?
     @ai_move == WINNING_MOVE_AGAINST[@player_move]
+  end
+
+  def tied?
+    @ai_move == @player_move
   end
 end
