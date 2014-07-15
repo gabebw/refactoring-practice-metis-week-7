@@ -5,6 +5,10 @@ class Round
   end
 
   def play
+    @ai.play(@player_move)
+  end
+
+  def announce_winner
     puts "AI played #{ai_move}"
     announce_winner
   end
@@ -29,6 +33,6 @@ class Round
   end
 
   def ai_move
-    @ai_move ||= @ai.play(@player_move)
+    @ai.move
   end
 end

@@ -1,5 +1,5 @@
 class Judge
-  WINNING_MOVE = {
+  WINNING_MOVE_AGAINST = {
     "S" => "R",
     "R" => "P",
     "P" => "S",
@@ -11,7 +11,7 @@ class Judge
   end
 
   def winner
-    if @ai_move == winning_move_against(@player_move)
+    if ai_won?
       :ai
     else
       :player
@@ -20,7 +20,7 @@ class Judge
 
   private
 
-  def winning_move_against(move)
-    WINNING_MOVE[move]
+  def ai_won?
+    @ai_move == WINNING_MOVE_AGAINST[@player_move]
   end
 end
