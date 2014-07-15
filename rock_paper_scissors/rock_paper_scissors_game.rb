@@ -6,12 +6,24 @@ require "./judge"
 require "./scorer"
 
 class RockPaperScissorsGame
-  def initialize(ai_class)
+  POSSIBLE_AIS = {
+    winning: WinningAi,
+    losing: LosingAi,
+    random: RandomAi,
+  }
+
+  def initialize
     @rounds = []
-    @ai_class = ai_class
   end
 
   def play
+    @ai_class = ask_for_ai
+    game_loop
+  end
+
+  private
+
+  def game_loop
     loop do
       move = ask_for_move
       if move == "q"
@@ -22,7 +34,10 @@ class RockPaperScissorsGame
     end
   end
 
-  private
+  def ask_for_ai
+    print "Which AI would you like to use: #{POSSIBLE_AIS.keys.map(&:to_s)} > "
+    POSSIBLE_AIS.fetch(gets.chomp.to_sym)
+  end
 
   def ask_for_move
     score = Scorer.new(@rounds).formatted_score
@@ -37,4 +52,4 @@ class RockPaperScissorsGame
   end
 end
 
-RockPaperScissorsGame.new(LosingAi).play
+RockPaperScissorsGame.new.play
