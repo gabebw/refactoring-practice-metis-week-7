@@ -1,4 +1,4 @@
-class Ai
+class RandomAi
   MOVES = %w[R P S]
 
   def play(player_move)

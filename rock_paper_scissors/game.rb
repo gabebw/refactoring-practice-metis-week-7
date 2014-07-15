@@ -1,10 +1,10 @@
-require "./ai"
+require "./random_ai"
 require "./round"
 require "./judge"
 require "./scorer"
 
 class Game
-  def initialize(ai_class = Ai)
+  def initialize(ai_class)
     @rounds = []
     @ai_class = ai_class
   end
@@ -35,4 +35,4 @@ class Game
   end
 end
 
-Game.new(Ai).play
+Game.new(RandomAi).play
