@@ -22,7 +22,7 @@ class Game
   private
 
   def ask_for_move
-    print "Your move? (RPSLO, q to quit) > "
+    print "Your move? (R/P/S, q to quit) > "
     gets.chomp
   end
 
@@ -30,6 +30,9 @@ class Game
     round = Round.new(move, @ai)
     @rounds << round
     round.play
+  end
+
+  def display_round(round)
   end
 end
 

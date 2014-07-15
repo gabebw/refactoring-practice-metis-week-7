@@ -1,5 +1,5 @@
 class Ai
-  MOVES = %w[R P S L O]
+  MOVES = %w[R P S]
 
   def play(player_move)
     @move = select_move(player_move)
