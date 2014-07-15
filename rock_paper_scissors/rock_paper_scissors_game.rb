@@ -5,7 +5,7 @@ require "./round"
 require "./judge"
 require "./scorer"
 
-class Game
+class RockPaperScissorsGame
   def initialize(ai_class)
     @rounds = []
     @ai_class = ai_class
@@ -37,4 +37,4 @@ class Game
   end
 end
 
-Game.new(LosingAi).play
+RockPaperScissorsGame.new(LosingAi).play
