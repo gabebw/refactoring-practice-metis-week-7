@@ -44,7 +44,8 @@ class RockPaperScissorsGame
 
   def ask_for_move
     score = Scorer.new(@rounds).formatted_score
-    print "#{score} Your move? (#{MOVES.join("/")}, #{CHARACTER_TO_QUIT} to quit) > "
+    valid_input = "#{MOVES.join("/")}, #{CHARACTER_TO_QUIT} to quit"
+    print "#{score} Your move? (#{valid_input}) > "
     gets.chomp
   end
 
