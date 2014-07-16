@@ -15,26 +15,25 @@ class Round
   end
 
   def score
-    if winner == :ai
-      0
-    elsif winner == :player
+    if judge.player_won?
       1
+    else
+      0
     end
   end
 
   private
 
   def announce_winner
-    if winner == :ai
+    if judge.ai_won?
       puts "AI beats Player"
-    else
+    elsif judge.player_won?
       puts "Player beats AI"
     end
   end
 
-  def winner
-    judge = Judge.new(player_move, ai_move)
-    judge.winner
+  def judge
+    @judge ||= Judge.new(player_move, ai_move)
   end
 
   def player_move

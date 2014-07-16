@@ -5,28 +5,20 @@ class Judge
     "P" => "S",
   }
 
-  WINNER_IN_CASE_OF_TIE = :player
-
   def initialize(player_move, ai_move)
     @player_move = player_move
     @ai_move = ai_move
   end
 
-  def winner
-    if tied?
-      WINNER_IN_CASE_OF_TIE
-    elsif ai_won?
-      :ai
-    else
-      :player
-    end
-  end
-
-  private
-
   def ai_won?
     @ai_move == WINNING_MOVE_AGAINST[@player_move]
   end
+
+  def player_won?
+    ! ai_won?
+  end
+
+  private
 
   def tied?
     @ai_move == @player_move
