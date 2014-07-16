@@ -6,6 +6,9 @@ require "./judge"
 require "./scorer"
 
 class RockPaperScissorsGame
+  CHARACTER_TO_QUIT = "q"
+  MOVES = %w[R P S]
+  POSSIBLE_INPUT = MOVES + [CHARACTER_TO_QUIT]
   POSSIBLE_AIS = {
     winning: WinningAi,
     losing: LosingAi,
@@ -26,7 +29,7 @@ class RockPaperScissorsGame
   def game_loop
     loop do
       move = ask_for_move
-      if move == "q"
+      if move == CHARACTER_TO_QUIT
         break
       else
         play_round(move)
