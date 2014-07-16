@@ -39,7 +39,10 @@ class RockPaperScissorsGame
 
   def ask_for_ai
     print "Which AI would you like to use? (#{POSSIBLE_AIS.keys.join(", ")}) > "
-    POSSIBLE_AIS.fetch(gets.chomp.to_sym)
+    POSSIBLE_AIS.fetch(gets.chomp.to_sym) do |key|
+      puts "'#{key}' is not a valid AI type!"
+      exit 1
+    end
   end
 
   def ask_for_move
