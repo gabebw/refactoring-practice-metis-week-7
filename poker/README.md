@@ -1,3 +1,0 @@
-# Poker
-
-A poker game.
