@@ -38,13 +38,13 @@ class RockPaperScissorsGame
   end
 
   def ask_for_ai
-    print "Which AI would you like to use: #{POSSIBLE_AIS.keys.map(&:to_s)} > "
+    print "Which AI would you like to use? (#{POSSIBLE_AIS.keys.join(", ")}) > "
     POSSIBLE_AIS.fetch(gets.chomp.to_sym)
   end
 
   def ask_for_move
     score = Scorer.new(@rounds).formatted_score
-    print "#{score} Your move? (R/P/S, q to quit) > "
+    print "#{score} Your move? (#{MOVES.join("/")}, #{CHARACTER_TO_QUIT} to quit) > "
     gets.chomp
   end
 
