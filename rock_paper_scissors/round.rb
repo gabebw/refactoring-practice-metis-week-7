@@ -33,11 +33,7 @@ class Round
   end
 
   def judge
-    @judge ||= Judge.new(player_move, ai_move)
-  end
-
-  def player_move
-    @player_move
+    @judge ||= Judge.new(@player_move, ai_move)
   end
 
   def ai_move
