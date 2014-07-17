@@ -34,9 +34,12 @@ class RockPaperScissorsGame
   end
 
   def ask_for_move
-    while ! MOVES.include?(ask_for_input)
+    move = ask_for_input
+    while ! MOVES.include?(move)
       puts "!!! Invalid choice! Try again."
+      move = ask_for_input
     end
+    move
   end
 
   def ask_for_input
